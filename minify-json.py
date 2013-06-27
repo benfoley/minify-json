@@ -49,18 +49,11 @@ def validate_options(options):
     if not 'input' in options:
         raise RuntimeError("No [input] argument was provided")
 
-    if not isinstance(options['input'], basestring):
-        raise TypeError("First argument [input] was not a string")
-
     if not (os.path.isfile(options['input']) or os.path.isdir(options['input'])):
-        raise TypeError("First argument [input] is not a file or directory")
+        raise TypeError("[input] '" + options['input'] + "' is not a file or directory")
 
-    if 'output' in options:
-        if not isinstance(options['output'], basestring):
-            raise TypeError("Second argument was not a string")
-
-        if os.path.isdir(options['input']) and not os.path.isdir(options['output']):
-            raise TypeError("Second argument [output] must be a directory because [input] is a directory")
+    if 'output' in options and os.path.isdir(options['input']) and not os.path.isdir(options['output']):
+        raise TypeError("[output] '" + options['output'] + "' must be a directory because [input] is a directory")
 
 
 ################################################################################
