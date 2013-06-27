@@ -13,6 +13,7 @@ And `output` is:
 * A filepath
 * A directory
 
-Note: When `input` is a directory, JSON files will be minified recursively within the specified path.
+Note: When `input` is a directory, the script will search the directory recursively for JSON files, minify each one, and write it to the specified output path.
+
 Note: If `output` is unspecified, minified JSON will print to `stdout`.
 
