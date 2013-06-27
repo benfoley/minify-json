@@ -2,12 +2,35 @@
 
 # minify-json.py
 # Created by James Ross 2013/6/26
-# Copyright (c) Z2 2013. All rights reserved.
+# ------------------------------------------------------------------------------
+# The MIT License (MIT)
+#
+# Copyright (c) 2013 Z2.
+#
+# Permission is hereby granted, free of charge, to any person obtaining a copy
+# of this software and associated documentation files (the "Software"), to deal
+# in the Software without restriction, including without limitation the rights
+# to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+# copies of the Software, and to permit persons to whom the Software is
+# furnished to do so, subject to the following conditions:
+#
+# The above copyright notice and this permission notice shall be included in
+# all copies or substantial portions of the Software.
+#
+# THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+# IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+# FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+# AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+# LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+# OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+# THE SOFTWARE.
+# ------------------------------------------------------------------------------
 
 import sys
 import os
 import os.path
 import json
+
 
 ################################################################################
 def parse_args(argv):
@@ -38,7 +61,7 @@ def validate_options(options):
 
         if os.path.isdir(options['input']) and not os.path.isdir(options['output']):
             raise TypeError("Second argument [output] must be a directory because [input] is a directory")
-    
+
 
 ################################################################################
 def print_help_and_exit():
@@ -100,7 +123,7 @@ def minify_dir(dir_in, dir_out):
     for relative_filepath in files:
         file_in = os.path.join(abs_dir_in, relative_filepath)
         file_out = ""
-        if len(dir_out) > 0: 
+        if len(dir_out) > 0:
             file_out = os.path.join(dir_out, relative_filepath)
 
         minify_file(file_in, file_out)
@@ -120,12 +143,10 @@ try:
     output = options['output'] if 'output' in options else ""
 
     if os.path.isfile(options['input']):
-        minify_file(options['input'], output) 
+        minify_file(options['input'], output)
 
     elif os.path.isdir(options['input']):
         minify_dir(options['input'], output)
 
 except Exception, e:
     print_error_and_exit(str(e) + "\n")
-
-
