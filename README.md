@@ -4,11 +4,11 @@ Minifies JSON strings.
 
     % minify-json.py [input] [output]
 
-Where `input` is:
+Where `input` can be:
 * A JSON filepath
 * A directory
 
-And `output` is:
+And `output` can be:
 * Optional
 * A filepath
 * A directory
