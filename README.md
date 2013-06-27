@@ -9,7 +9,6 @@ Where `input` can be:
 * A directory
 
 And `output` can be:
-* Optional
 * A filepath
 * A directory
 
